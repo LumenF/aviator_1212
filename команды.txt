@@ -1,0 +1,19 @@
+##### Запушить
+sudo docker-compose build && sudo docker tag aviator_web pyostr/aviator_link && sudo docker push pyostr/aviator_link
+
+
+##### Перезагрузка локал
+sudo docker-compose build && sudo docker container stop aviator && sudo docker container rm aviator && docker run --name aviator --env DEBUG=False -p 8001:8000 -d aviator_web
+
+##### обновить и перезагрузить прод
+sudo docker pull pyostr/aviator_link && sudo docker container stop aviator && sudo docker container rm aviator && docker run --name aviator --env DEBUG=False -p 8001:8000 -d pyostr/aviator_link
+server {
+        listen 80 default_server;
+        listen [::]:80 default_server;
+
+        server_name _;
+        location / {
+                try_files $uri $uri/ =404;
+        }
+
+}
