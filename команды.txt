@@ -17,3 +17,16 @@ server {
         }
 
 }
+
+
+<script>
+    document.querySelector('#leadButton').addEventListener('click', (e) => {
+        e.preventDefault();
+        setTimeout(() => {
+            window.location.href = e.target.href;
+        }, 500);
+        fbq('track', 'Lead');
+
+    })
+
+</script>

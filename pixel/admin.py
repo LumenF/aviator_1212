@@ -1,3 +1,11 @@
 from django.contrib import admin
 
-# Register your models here.
+from pixel.models import CountModel
+
+
+@admin.register(CountModel)
+class CountAdmin(admin.ModelAdmin):
+    list_display = (
+        'team',
+        'count'
+    )
